@@ -33,6 +33,8 @@
         // calling jquery functions once document is ready
         $(document).ready(function() {
 
+            HideShow();
+
             var resultValueDR;
             var resultValueCR;
             var resultValue;
@@ -150,7 +152,53 @@
             //on focus loss
             $("#cmbTransDetailType").on('focusout', function(e) {
                 e.preventDefault();
+                $('#txtTransTypeCode').val($('#cmbTransDetailType').val());
+                if ($("#txtTransTypeCode").val() == "P") {
+                    if ($('#txtSubAcct').val() == "" || $('#txtSubAcct').val() == "000000") {
+                        $('#HidShowHide').val("show");
+                        HideShow();
+                    }
+
+                    else {
+                        $('#HidShowHide').val("hide");
+                        HideShow();
+                    } 
+                }
                 LedgerTypeRefresh()
+            });
+
+            $('#cmbMode').on('focusout', function(e) {
+                e.preventDefault();
+                $('#txtMode').val($('#cmbMode').val());
+                checkMode();
+
+                //return false;
+            });
+
+            $('#cmbCurrencyType').on('focusout', function(e) {
+                e.preventDefault();
+                $('#txtCurrencyCode').val($('#cmbCurrencyType').val());
+            });
+
+            $('#cmbDept').on('focusout', function(e) {
+                e.preventDefault();
+                $('#txtDeptCode').val($('#cmbDept').val());
+            });
+
+            //            $('#cmbTransDetailType').on('focusout', function(e) {
+            //                e.preventDefault();
+            //                $('#txtTransTypeCode').val($('#cmbTransDetailType').val());
+            //                
+            //            });
+
+            $('#cmbDRCR').on('focusout', function(e) {
+                e.preventDefault();
+                $('#txtDRCR').val($('#cmbDRCR').val());
+            });
+
+            $('#cmbBranchCode').on('focusout', function(e) {
+                e.preventDefault();
+                $('#txtBranchCode').val($('#cmbBranchCode').val());
             });
 
             $("#txtReceiptRefNo1").on('focusout', function(e) {
@@ -250,6 +298,10 @@
             $("#txtTransTypeCode").on('focusout', function(e) {
                 e.preventDefault();
                 if ($("#txtTransTypeCode").val() != "") {
+                    if ($("#txtTransTypeCode").val() == "P") {
+                        $('#HidShowHide').val("show");
+                        HideShow();
+                    }
                     GetTransType();
                 }
                 //return false;
@@ -391,10 +443,13 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function(data) {
+                        $('#HidShowHide').val("hide");
+                        HideShow();
                         var xmlDoc = $.parseXML(data.d);
                         var xml = $(xmlDoc);
                         var accountcharts = xml.find("Table");
                         retrieve_AccountChartInfoValues(accountcharts, drcr)
+                        AutoSelectBroker();
                     },
                     failure: OnFailure_LoadChartInfo,
                     // error: OnError_LoadChartInfo
@@ -404,6 +459,8 @@
                             $("#txtMainAcct").focus();
                             $("#txtSubAcct").val("000000");
                         }
+
+                        AutoSelectBroker();
                     }
                 });
                 // this avoids page refresh on button click
@@ -813,6 +870,26 @@
             //loading screen functionality - this part is additional - end
         });
 
+        //Refresh screen with post back values
+        function HideShow() {
+            switch ($('#HidShowHide').val()) {
+                case "hide":
+                    $('#HideShow').hide();
+                    $('#txtTempBrokerName').val("");
+                    break;
+                default:
+                    $('#HideShow').show();
+            }
+
+        }
+
+        function AutoSelectBroker() {
+            if ($("#txtMainAcct").val() == "1020080010" || $("#txtMainAcct").val() == "1020080015" || $("#txtMainAcct").val() == "1020080020") {
+                $("#cmbTransDetailType").focus();
+                $("#cmbTransDetailType").val('P');
+            }
+        }
+
 
 
         // loading screen functionality functions - this part is additional - start
@@ -1076,6 +1153,10 @@
         {
             height: 24px;
         }
+        .style3
+        {
+            width: 39px;
+        }
     </style>
 </head>
 <body onload="<%=publicMsgs%>" onclick="return cancelEvent('onbeforeunload')">
@@ -1174,7 +1255,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtDeptCode" runat="server" Width="30px"></asp:TextBox>
-                                        <asp:DropDownList ID="cmbDept" runat="server" Width="265px" TabIndex="5" AutoPostBack="True">
+                                        <asp:DropDownList ID="cmbDept" runat="server" Width="265px" TabIndex="5">
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
@@ -1184,7 +1265,7 @@
                                     </td>
                                     <td class="style2">
                                         <asp:TextBox ID="txtMode" runat="server" Width="85px"></asp:TextBox>
-                                        <asp:DropDownList ID="cmbMode" runat="server" Width="180px" TabIndex="6" AutoPostBack="True">
+                                        <asp:DropDownList ID="cmbMode" runat="server" Width="180px" TabIndex="6">
                                             <asp:ListItem Value="0" Text="Mode"></asp:ListItem>
                                             <asp:ListItem Value="C" Text="C-Cash"></asp:ListItem>
                                             <asp:ListItem Value="Q" Text="Q-Cheque"></asp:ListItem>
@@ -1247,7 +1328,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtCurrencyCode" runat="server" Width="64px" TabIndex="9"></asp:TextBox>&nbsp;<asp:DropDownList
-                                            ID="cmbCurrencyType" runat="server" Width="201px" TabIndex="12" AutoPostBack="True">
+                                            ID="cmbCurrencyType" runat="server" Width="201px" TabIndex="12">
                                             <asp:ListItem Value="0" Text="Currency Type"></asp:ListItem>
                                         </asp:DropDownList>
                                         <asp:CustomValidator ID="csValidateCurrencyType" runat="server" ErrorMessage="Please Select the Currency Type">*</asp:CustomValidator>
@@ -1279,7 +1360,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtBranchCode" runat="server" Width="57px" TabIndex="11"></asp:TextBox>
-                                        <asp:DropDownList ID="cmbBranchCode" runat="server" Width="238px" TabIndex="13" AutoPostBack="True">
+                                        <asp:DropDownList ID="cmbBranchCode" runat="server" Width="238px" TabIndex="13">
                                             <asp:ListItem Value="0" Text="Branch Code"></asp:ListItem>
                                         </asp:DropDownList>
                                     </td>
@@ -1308,7 +1389,7 @@
                             <div id="DetailPart">
                                 <table class="tbl_menu_new">
                                     <tr>
-                                        <td colspan="9" class="myMenu_Title" align="center">
+                                        <td colspan="10" class="myMenu_Title" align="center">
                                             Transaction Detail Entry
                                         </td>
                                         <td>
@@ -1328,8 +1409,9 @@
                                         <td>
                                             <asp:Label ID="lblLedgerType" runat="server" Text="Typ"></asp:Label>
                                         </td>
-                                        <td>
+                                        <td class="style3" colspan="2">
                                             <asp:Label ID="lblTranType" runat="server" Text="Tran Type"></asp:Label>
+                                            s
                                         </td>
                                         <td>
                                             <asp:Label ID="lblDRCR" runat="server" Text="DR/CR"></asp:Label>
@@ -1361,15 +1443,15 @@
                                         <td>
                                             <asp:TextBox ID="txtLedgerType" runat="server" Width="25px"></asp:TextBox>
                                         </td>
-                                        <td style="white-space: nowrap">
+                                        <td style="white-space: nowrap" class="style3" colspan="2">
                                             <asp:TextBox ID="txtTransTypeCode" runat="server" Width="30"></asp:TextBox>
-                                            <asp:DropDownList ID="cmbTransDetailType" runat="server" Width="150px" AutoPostBack="True">
+                                            <asp:DropDownList ID="cmbTransDetailType" runat="server" Width="150px">
                                             </asp:DropDownList>
                                             <img src="img/plusimage.png" id="TranTypeAdd" alt="add record" class="searchImage" />
                                         </td>
                                         <td>
                                             <asp:TextBox ID="txtDRCR" runat="server" Width="18px" TabIndex="17"></asp:TextBox>
-                                            <asp:DropDownList ID="cmbDRCR" runat="server" Width="59px" AutoPostBack="True">
+                                            <asp:DropDownList ID="cmbDRCR" runat="server" Width="59px">
                                                 <asp:ListItem Value="0" Text="DR/CR"></asp:ListItem>
                                                 <asp:ListItem Value="D" Text="D-Debit" Selected="True"></asp:ListItem>
                                                 <asp:ListItem Value="C" Text="C-Credit"></asp:ListItem>
@@ -1378,10 +1460,10 @@
                                                 ControlToValidate="cmbDRCR">*</asp:CustomValidator>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtReceiptRefNo1" runat="server" Width="90px"></asp:TextBox>
+                                            <asp:TextBox ID="txtReceiptRefNo1" runat="server" Width="78px"></asp:TextBox>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtReceiptRefNo2" runat="server" Width="90px"></asp:TextBox>
+                                            <asp:TextBox ID="txtReceiptRefNo2" runat="server" Width="71px"></asp:TextBox>
                                         </td>
                                         <td>
                                             <asp:TextBox ID="txtReceiptRefNo3" runat="server" Width="90px"></asp:TextBox>
@@ -1398,15 +1480,22 @@
                                             S/No<asp:TextBox ID="txtSubSerialNo" runat="server" BorderStyle="None" Width="30px"
                                                 Height="22px"></asp:TextBox>
                                         </td>
-                                        <td colspan="5">
+                                        <td colspan="3">
                                             <asp:Label ID="lblRefDate" Text="Ref. Date" runat="server" Visible="false"></asp:Label>
                                             <asp:TextBox ID="txtRefDate" runat="server" Width="100px" BorderStyle="None" Visible="false"
                                                 Font-Bold="true"></asp:TextBox><asp:Label ID="lblRefAmt" Text="Ref. Amt" runat="server"
                                                     Visible="false"></asp:Label>
                                             <asp:TextBox ID="txtRefAmt" runat="server" BorderStyle="None" Width="150px" Text="0.00"
                                                 Visible="false" Font-Bold="true"></asp:TextBox>
-                                            <asp:Label ID="lblRemarks" runat="server" Text="Description"></asp:Label>
-                                            <asp:TextBox ID="txtRemarks" runat="server" Width="300px" TabIndex="16"></asp:TextBox>
+                                            <asp:Label ID="lblRemarks" runat="server" Text="Desc"></asp:Label>
+                                            <asp:TextBox ID="txtRemarks" runat="server" Width="222px" TabIndex="16"></asp:TextBox>
+                                            &nbsp;
+                                        </td>
+                                        <td colspan="3">
+                                            <div id="HideShow">
+                                                <asp:Label ID="lblTempBrokerName" runat="server" Text="Brk Name"></asp:Label>
+                                                <asp:TextBox ID="txtTempBrokerName" runat="server" Width="154px"></asp:TextBox>
+                                            </div>
                                         </td>
                                         <td>
                                         </td>
@@ -1542,6 +1631,7 @@
                                         <asp:Parameter DefaultValue="0" Name="_searchDirection" Type="Int32" />
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
+                                <asp:HiddenField ID="HidShowHide" runat="server" />
                             </div>
                         </div>
                     </div>

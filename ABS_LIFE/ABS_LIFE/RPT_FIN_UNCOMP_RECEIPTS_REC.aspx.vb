@@ -43,4 +43,8 @@ Partial Public Class RPT_FIN_UNCOMP_RECEIPTS_REC
         Response.Redirect("PrintView.aspx")
         ' Response.Redirect("PrintView.aspx")
     End Sub
+
+    Protected Sub butClose_Click(ByVal sender As Object, ByVal e As EventArgs) Handles butClose.Click
+        Response.Redirect("ReceiptsList.aspx")
+    End Sub
 End Class

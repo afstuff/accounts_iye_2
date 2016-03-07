@@ -169,6 +169,8 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
                         .Remarks = txtRemarks.Text
 
                         .SubAccount = txtSubAcct.Text
+                        .TempBrokerName = txtTempBrokerName.Text
+
                         If Trim(txtTellerDate.Text).Length > 0 Then
                             .TellerDate = ValidDate(txtTellerDate.Text)
                         Else
@@ -320,6 +322,7 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
                         .RecordStatus = "A"
                         .Remarks = txtRemarks.Text
                         .SubAccount = txtSubAcct.Text
+                        .TempBrokerName = txtTempBrokerName.Text
                         docMonth = Right(txtBatchDate.Text, 2)
                         docYear = Left(txtBatchDate.Text, 4)
 
@@ -431,7 +434,7 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
                 txtDeptCode.Text = cmbDept.SelectedValue
                 txtReceiptNo.Text = .DocNo
                 txtEntryDate.Text = .EntryDate
-                cmbTransDetailType.SelectedValue = .DetailTransType
+                cmbTransDetailType.SelectedValue = Trim(.DetailTransType)
                 txtTransTypeCode.Text = cmbTransDetailType.SelectedValue
                 cmbDRCR.SelectedValue = .DRCR
                 txtDRCR.Text = cmbDRCR.SelectedValue
@@ -446,16 +449,22 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
                 '.OperatorId = "001"
                 ' .PostStatus = "U" 'Unposted
                 txtRemarks.Text = .Remarks
-
+               
                 If .SubAccount = "" Then
                     txtSubAcct.Text = "000000"
                 Else
                     txtSubAcct.Text = .SubAccount
+
                 End If
 
                 'Fill Account Description
                 If txtMainAcct.Text <> "" Then
                     GetAcctDescription()
+                End If
+
+                txtTempBrokerName.Text = .TempBrokerName
+                If .TempBrokerName <> "" Then
+                    HidShowHide.Value = "show"
                 End If
 
                 txtSubSerialNo.Text = .SubSerialNo
@@ -533,7 +542,7 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
 
 
         txtSubSerialNo.Text = 0
-
+        txtTempBrokerName.Text = String.Empty
 
         updateFlag = False
         Session("updateFlag") = updateFlag 'ready for a new record
@@ -549,6 +558,7 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
     Protected Sub initializeDetailFields()
 
         cmbTransDetailType.SelectedIndex = 0
+        txtTransTypeCode.Text = String.Empty
         cmbDRCR.SelectedIndex = 1
         txtRefAmt.Text = String.Empty
         txtRefDate.Text = String.Empty
@@ -561,9 +571,9 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
         txtSubAcctDesc.Text = String.Empty
         txtMainAcctDesc.Text = String.Empty
         txtLedgerType.Text = String.Empty
-
+       
         txtSubSerialNo.Text = 0
-
+        txtTempBrokerName.Text = String.Empty
         detailEdit = "N"
         Session("detailEdit") = detailEdit
         swEntry = "D"
@@ -811,46 +821,46 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
 
     End Function
 
-    Protected Sub cmbBranchCode_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbBranchCode.SelectedIndexChanged
-        lblError.Text = ""
+    'Protected Sub cmbBranchCode_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbBranchCode.SelectedIndexChanged
+    '    lblError.Text = ""
 
-        If cmbBranchCode.SelectedIndex <> 0 Then
-            txtBranchCode.Text = cmbBranchCode.SelectedValue
-        End If
-    End Sub
+    '    If cmbBranchCode.SelectedIndex <> 0 Then
+    '        txtBranchCode.Text = cmbBranchCode.SelectedValue
+    '    End If
+    'End Sub
 
-    Protected Sub cmbDept_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbDept.SelectedIndexChanged
-        lblError.Text = ""
+    'Protected Sub cmbDept_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbDept.SelectedIndexChanged
+    '    lblError.Text = ""
 
-        If cmbDept.SelectedIndex <> 0 Then
-            txtDeptCode.Text = cmbDept.SelectedValue
-        End If
-    End Sub
+    '    If cmbDept.SelectedIndex <> 0 Then
+    '        txtDeptCode.Text = cmbDept.SelectedValue
+    '    End If
+    'End Sub
 
-    Protected Sub cmbCurrencyType_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbCurrencyType.SelectedIndexChanged
-        lblError.Text = ""
+    'Protected Sub cmbCurrencyType_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbCurrencyType.SelectedIndexChanged
+    '    lblError.Text = ""
 
-        If cmbCurrencyType.SelectedIndex <> 0 Then
-            txtCurrencyCode.Text = cmbCurrencyType.SelectedValue
-        End If
-    End Sub
+    '    If cmbCurrencyType.SelectedIndex <> 0 Then
+    '        txtCurrencyCode.Text = cmbCurrencyType.SelectedValue
+    '    End If
+    'End Sub
 
-    Protected Sub cmbTransDetailType_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbTransDetailType.SelectedIndexChanged
-        lblError.Text = ""
+    'Protected Sub cmbTransDetailType_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbTransDetailType.SelectedIndexChanged
+    '    lblError.Text = ""
 
-        If cmbTransDetailType.SelectedIndex <> 0 Then
-            txtTransTypeCode.Text = cmbTransDetailType.SelectedValue
-        End If
-    End Sub
+    '    If cmbTransDetailType.SelectedIndex <> 0 Then
+    '        txtTransTypeCode.Text = cmbTransDetailType.SelectedValue
+    '    End If
+    'End Sub
 
-    Protected Sub cmbDRCR_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbDRCR.SelectedIndexChanged
-        lblError.Text = ""
-        If cmbDRCR.SelectedIndex <> 0 Then
-            txtDRCR.Text = cmbDRCR.SelectedValue
-        Else
-            txtDRCR.Text = ""
-        End If
-    End Sub
+    'Protected Sub cmbDRCR_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbDRCR.SelectedIndexChanged
+    '    lblError.Text = ""
+    '    If cmbDRCR.SelectedIndex <> 0 Then
+    '        txtDRCR.Text = cmbDRCR.SelectedValue
+    '    Else
+    '        txtDRCR.Text = ""
+    '    End If
+    'End Sub
 
     Private Sub ValidateFields(ByRef ErrorInd)
         'Dim lblError.Text
@@ -1058,6 +1068,7 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
         If dt.Tables(0).Rows().Count <> 0 Then
             txtMainAcctDesc.Text = dt.Tables(0).Rows(0).Item("sMainDesc")
             txtSubAcctDesc.Text = dt.Tables(0).Rows(0).Item("sSubDesc")
+            HidShowHide.Value = "hide"
         End If
     End Sub
 
@@ -1228,7 +1239,7 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
                 End If
 
             Case "02"
-                If (Val(strDteYY) \ 4) = 0 Then
+                If (Val(strDteYY) Mod 4) = 0 Then
                     If Val(strDteDD) > 29 Then
                         strDteMsg = strDteMsg & _
                             "  -> Invalid day in month. Month <" & strDteMM & ">" & _
