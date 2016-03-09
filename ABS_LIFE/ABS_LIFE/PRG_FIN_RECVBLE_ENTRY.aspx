@@ -41,6 +41,29 @@
             var resultDesc;
             var resultLedgType;
 
+
+
+            $('#butSave, #butSaveDetail').click(function() {
+                var mainAcctCode = document.getElementById('txtMainAcct').value;
+                var subAcctCode = document.getElementById('txtSubAcct').value;
+                if (mainAcctCode == "" || mainAcctCode == "1020080010" || mainAcctCode == "1020080015" || mainAcctCode == "1020080020") {
+                    if (subAcctCode == "" || subAcctCode == "000000") {
+                        if ($('#txtTempBrokerName').val() == "") {
+                            alert("Broker name is empty");
+                            var result = confirm("Do you want to continue saving this record");
+                            if (result) {
+                                return true;
+                            }
+                            else {
+                                $('#txtTempBrokerName').focus();
+                                return false;
+                            }
+                        }
+                    }
+                }
+
+            })
+
             function GeneralRefresh() {
 
                 if ($('#txtLedgerType').val() == 'T' || $('#txtLedgerType').val() == 'R') {
@@ -162,7 +185,7 @@
                     else {
                         $('#HidShowHide').val("hide");
                         HideShow();
-                    } 
+                    }
                 }
                 LedgerTypeRefresh()
             });
@@ -170,7 +193,7 @@
             $('#cmbMode').on('focusout', function(e) {
                 e.preventDefault();
                 $('#txtMode').val($('#cmbMode').val());
-                checkMode();
+                //checkMode();
 
                 //return false;
             });

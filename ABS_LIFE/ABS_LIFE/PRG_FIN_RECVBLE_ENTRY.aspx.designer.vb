@@ -592,24 +592,6 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
     Protected WithEvents txtTransAmt As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''lblTempBrokerName control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblTempBrokerName As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''txtTempBrokerName control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtTempBrokerName As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
     '''txtSubSerialNo control.
     '''</summary>
     '''<remarks>
@@ -671,6 +653,24 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtRemarks As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''lblTempBrokerName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblTempBrokerName As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''txtTempBrokerName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTempBrokerName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''butSaveDetail control.

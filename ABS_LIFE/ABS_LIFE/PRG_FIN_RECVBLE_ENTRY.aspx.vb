@@ -1053,6 +1053,18 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
             lblError.Visible = True
             Exit Sub
         End If
+
+
+        'If txtMainAcct.Text = "1020080010" Or txtMainAcct.Text = "1020080015" Or txtMainAcct.Text = "1020080020" Then
+        '    If txtSubAcct.Text = "" Or txtSubAcct.Text = "000000" Then
+        '        lblError.Text = "Total Amount must be numeric"
+        '        ErrorInd = "Y"
+        '        publicMsgs = "javascript:alert('" + lblError.Text + "')"
+        '        txtTotalAmt.Focus()
+        '        lblError.Visible = True
+        '        Exit Sub
+        '    End If
+        'End If
     End Sub
 
     Protected Sub txtTransAmt_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtTransAmt.TextChanged
