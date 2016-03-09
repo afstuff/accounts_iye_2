@@ -46,5 +46,6 @@ namespace CustodianLife.Model
        public virtual string RecordStatus { get; set; }
        public virtual string OperatorId { get; set; }
        public virtual decimal TotalAmt { get; set; }
+       public virtual string TempBrokerName { get; set; }
    }
 }
