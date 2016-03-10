@@ -64,7 +64,6 @@ C:\James Stuff\VS2008 VERSION\CustodianLife\ABS_LIFE\ABS_LIFE\obj\Debug\ABS_LIFE
 E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\bin\ABS_LIFE.dll
 E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\bin\ABS_LIFE.pdb
 E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\bin\ABS_LIFE.xml
-E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\bin\CustodianLife.Data.pdb
 E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\obj\Debug\ResolveAssemblyReference.cache
 E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\obj\Debug\ABS_LIFE.Resources.resources
 E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\obj\Debug\ABS_LIFE.vbproj.GenerateResource.Cache
@@ -77,6 +76,7 @@ E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\bin\log4net.dll
 E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\bin\NHibernate.dll
 E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\bin\Iesi.Collections.xml
 E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\bin\CustodianLife.Model.pdb
+E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\bin\CustodianLife.Data.pdb
 E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\bin\CustodianLife.Repositories.pdb
 E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\bin\log4net.xml
 E:\AFRIK\accounts_iye_1 development\ABS_LIFE\ABS_LIFE\bin\NHibernate.xml

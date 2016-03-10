@@ -19,7 +19,7 @@
     <script src="../calendar_eu.js" type="text/javascript"></script>
 
     <link href="../calendar.css" rel="stylesheet" type="text/css" />
-    <title></title>
+    <title>Incomplete Receipts</title>
 
     <script>
         $(document).ready(function() {

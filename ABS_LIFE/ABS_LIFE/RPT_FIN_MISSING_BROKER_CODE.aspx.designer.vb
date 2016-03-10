@@ -13,79 +13,79 @@ Option Explicit On
 
 
 
-Partial Public Class ReceiptOthersList
+Partial Public Class RPT_FIN_MISSING_BROKER_CODE
 
     '''<summary>
-    '''frmReceiptsList control.
+    '''Head1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents frmReceiptsList As Global.System.Web.UI.HtmlControls.HtmlForm
+    Protected WithEvents Head1 As Global.System.Web.UI.HtmlControls.HtmlHead
 
     '''<summary>
-    '''lblMessage control.
+    '''RPT_FIN_UNCOMP_RECEIPTS_REC control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents RPT_FIN_UNCOMP_RECEIPTS_REC As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''cmbSearch control.
+    '''litMsgs control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents cmbSearch As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents litMsgs As Global.System.Web.UI.WebControls.Literal
 
     '''<summary>
-    '''cmbDirection control.
+    '''Status control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents cmbDirection As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents Status As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtSearch control.
+    '''Label1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtSearch As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''butGO control.
+    '''txtStartBatchNo control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents butGO As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents txtStartBatchNo As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''butNew control.
+    '''txtEndBatchNo control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents butNew As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents txtEndBatchNo As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''butExceptions control.
+    '''butOK control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents butExceptions As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents butOK As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''butClose control.
@@ -95,31 +95,4 @@ Partial Public Class ReceiptOthersList
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents butClose As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''grdData control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents grdData As Global.System.Web.UI.WebControls.GridView
-
-    '''<summary>
-    '''ods1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ods1 As Global.System.Web.UI.WebControls.ObjectDataSource
-
-    '''<summary>
-    '''txtProgType control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtProgType As Global.System.Web.UI.WebControls.TextBox
 End Class

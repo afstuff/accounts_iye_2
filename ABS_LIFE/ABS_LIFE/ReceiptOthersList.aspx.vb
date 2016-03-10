@@ -42,4 +42,8 @@ Partial Public Class ReceiptOthersList
     Protected Sub grdData_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles grdData.SelectedIndexChanged
 
     End Sub
+
+    Protected Sub butExceptions_Click(ByVal sender As Object, ByVal e As EventArgs) Handles butExceptions.Click
+        Response.Redirect("RPT_FIN_MISSING_BROKER_CODE.aspx")
+    End Sub
 End Class

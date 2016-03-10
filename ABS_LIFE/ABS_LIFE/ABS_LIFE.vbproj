@@ -540,6 +540,13 @@
       <DependentUpon>RECREATE.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="RPT_FIN_MISSING_BROKER_CODE.aspx.designer.vb">
+      <DependentUpon>RPT_FIN_MISSING_BROKER_CODE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RPT_FIN_MISSING_BROKER_CODE.aspx.vb">
+      <DependentUpon>RPT_FIN_MISSING_BROKER_CODE.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="RPT_FIN_UNCOMP_RECEIPTS_REC.aspx.designer.vb">
       <DependentUpon>RPT_FIN_UNCOMP_RECEIPTS_REC.aspx</DependentUpon>
     </Compile>
@@ -654,6 +661,7 @@
     <Content Include="ReceiptOthersList.aspx" />
     <Content Include="ReceiptPrint.aspx" />
     <Content Include="ReceiptsList.aspx" />
+    <Content Include="RPT_FIN_MISSING_BROKER_CODE.aspx" />
     <Content Include="RPT_FIN_UNCOMP_RECEIPTS_REC.aspx" />
     <Content Include="Script\ScriptJS.js" />
     <Content Include="Script\ScriptVB.vbs" />

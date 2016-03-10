@@ -3361,6 +3361,22 @@ txtRemarks control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:ABS_LIFE.PRG_FIN_RECVBLE_ENTRY.lblTempBrokerName">
+	<summary>
+lblTempBrokerName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:ABS_LIFE.PRG_FIN_RECVBLE_ENTRY.txtTempBrokerName">
+	<summary>
+txtTempBrokerName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:ABS_LIFE.PRG_FIN_RECVBLE_ENTRY.butSaveDetail">
 	<summary>
 butSaveDetail control.
@@ -3449,6 +3465,14 @@ ods1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:ABS_LIFE.PRG_FIN_RECVBLE_ENTRY.HidShowHide">
+	<summary>
+HidShowHide control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:ABS_LIFE.PRG_FIN_RECVBLE_ENTRY.txtRecptNo">
 	<summary>
 txtRecptNo control.
@@ -3460,6 +3484,78 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:ABS_LIFE.PRG_FIN_RECVBLE_ENTRY.butPrintRecpt">
 	<summary>
 butPrintRecpt control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:ABS_LIFE.RPT_FIN_MISSING_BROKER_CODE.Head1">
+	<summary>
+Head1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:ABS_LIFE.RPT_FIN_MISSING_BROKER_CODE.RPT_FIN_UNCOMP_RECEIPTS_REC">
+	<summary>
+RPT_FIN_UNCOMP_RECEIPTS_REC control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:ABS_LIFE.RPT_FIN_MISSING_BROKER_CODE.litMsgs">
+	<summary>
+litMsgs control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:ABS_LIFE.RPT_FIN_MISSING_BROKER_CODE.Status">
+	<summary>
+Status control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:ABS_LIFE.RPT_FIN_MISSING_BROKER_CODE.Label1">
+	<summary>
+Label1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:ABS_LIFE.RPT_FIN_MISSING_BROKER_CODE.txtStartBatchNo">
+	<summary>
+txtStartBatchNo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:ABS_LIFE.RPT_FIN_MISSING_BROKER_CODE.txtEndBatchNo">
+	<summary>
+txtEndBatchNo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:ABS_LIFE.RPT_FIN_MISSING_BROKER_CODE.butOK">
+	<summary>
+butOK control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:ABS_LIFE.RPT_FIN_MISSING_BROKER_CODE.butClose">
+	<summary>
+butClose control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -5180,6 +5276,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:ABS_LIFE.ReceiptOthersList.butNew">
 	<summary>
 butNew control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:ABS_LIFE.ReceiptOthersList.butExceptions">
+	<summary>
+butExceptions control.
 </summary>
 	<remarks>
 Auto-generated field.

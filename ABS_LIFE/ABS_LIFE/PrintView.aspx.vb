@@ -27,7 +27,7 @@
             '    'FirstMsg = "javascript:window.close();" & mystrURL
             'FirstMsg = "javascript:" & mystrURL
         Catch ex As Exception
-            ' Me.lblMsg.Text = "<br />Unable to connect to report viewer. <br />Reason: " & ex.Message.ToString
+            ' Me.lblMsg.Text = "<br />Unable to connect to r eport viewer. <br />Reason: " & ex.Message.ToString
 
         End Try
     End Sub
