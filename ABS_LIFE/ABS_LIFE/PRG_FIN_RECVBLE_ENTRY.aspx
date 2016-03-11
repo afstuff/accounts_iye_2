@@ -1516,7 +1516,7 @@
                                         </td>
                                         <td colspan="3">
                                             <div id="HideShow">
-                                                <asp:Label ID="lblTempBrokerName" runat="server" Text="Brk Name"></asp:Label>
+                                                <asp:Label ID="lblTempBrokerName" runat="server" Text="Client Name"></asp:Label>
                                                 <asp:TextBox ID="txtTempBrokerName" runat="server" Width="154px"></asp:TextBox>
                                             </div>
                                         </td>
