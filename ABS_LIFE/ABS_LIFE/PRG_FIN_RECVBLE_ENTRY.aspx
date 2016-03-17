@@ -64,6 +64,16 @@
 
             })
 
+            function AutoFillClientCode() {
+                if ($("#txtMainAcct").val() == "1020080010" && $("#txtSubAcct").val() != "000000") {
+                    var subAcct = $("#txtSubAcct").val();
+//                    var prefix = subAcct.substring(0, 2);
+//                    var suffix = subAcct.substring(2);
+//                    console.log("Prefix: " + prefix);
+//                    console.log("Suffix: " + suffix);
+                    $("#txtReceiptRefNo1").val(subAcct);
+                }
+            }
             function GeneralRefresh() {
 
                 if ($('#txtLedgerType').val() == 'T' || $('#txtLedgerType').val() == 'R') {
@@ -98,6 +108,10 @@
                             $('#lblRef2').css("color", "red");
                             $('#lblRef3').text("DRCR#");
                             $('#lblRef3').css("color", "red");
+                            $('#DebitNoteSearch').show();
+//                            $('#txtReceiptRefNo1').val('');
+//                            $('#txtReceiptRefNo2').val('');
+//                            $('#txtReceiptRefNo3').val('');
                         }
                         else if ($('#cmbTransDetailType').val() == 'M') {
                             $('#lblRef1').text("Broker");
@@ -106,6 +120,22 @@
                             $('#lblRef2').css("color", "red");
                             $('#lblRef3').text("DRCR#");
                             $('#lblRef3').css("color", "red");
+                            $('#DebitNoteSearch').hide();
+//                            $('#txtReceiptRefNo1').val('');
+//                            $('#txtReceiptRefNo2').val('');
+//                            $('#txtReceiptRefNo3').val('');
+                        }
+                        else {
+                            $('#lblRef1').text("Ref. No 1");
+                            $('#lblRef1').css("color", "black");
+                            $('#lblRef2').text("Ref. No 2");
+                            $('#lblRef2').css("color", "black");
+                            $('#lblRef3').text("Ref. No 3");
+                            $('#lblRef3').css("color", "black");
+                            $('#DebitNoteSearch').hide();
+//                            $('#txtReceiptRefNo1').val('');
+//                            $('#txtReceiptRefNo2').val('');
+//                            $('#txtReceiptRefNo3').val('');
                         }
                         break;
                     case "R":
@@ -115,6 +145,10 @@
                         $('#lblRef2').css("color", "red");
                         $('#lblRef3').hide();
                         $('#txtReceiptRefNo3').hide();
+                        $('#DebitNoteSearch').hide();
+//                        $('#txtReceiptRefNo1').val('');
+//                        $('#txtReceiptRefNo2').val('');
+//                        $('#txtReceiptRefNo3').val('');
                         break;
                 }
 
@@ -226,6 +260,7 @@
 
             $("#txtReceiptRefNo1").on('focusout', function(e) {
                 e.preventDefault();
+                $('#txtRefDesc1').val('');
                 if ($('#txtLedgerType').val() == 'T' || $('#txtLedgerType').val() == 'R') {
                     if ($('#cmbTransDetailType').val() == 'P' || $('#cmbTransDetailType').val() == 'R') {
                         LoadBrokerInfo();
@@ -273,6 +308,7 @@
                 $("#txtSubAcctDesc").val('');
                 if ($("#txtSubAcct").val() != "" && $("#txtMainAcct").val() != "")
                     LoadChartInfo("txtSubAcct", "txtMainAcct", "DR", "Sub");
+                AutoFillClientCode()
             });
 
             //retrieve data on focus loss branches
@@ -884,6 +920,47 @@
                 });
             });
 
+
+            //call popup to browse the main account SubAccountSearch
+            $('#DebitNoteSearch').click(function(e) {
+                e.preventDefault();
+                var src = "\DebitNoteBrowse.aspx";
+                $.modal('<iframe id="simplemodal-container" src="' + src + '" height="500" width="830" style="border:0">', {
+                    closeHTML: "<a  class='modalCloseImg' href='#'></a>",
+                    containerCss: {
+                        backgroundColor: "#fff",
+                        borderColor: "#fff",
+                        height: 500,
+                        padding: 0,
+                        width: 830
+                    },
+                    appendTo: 'form',
+                    persist: true,
+                    overlayClose: true,
+                    opacity: 30,
+                    overlayCss: { backgroundColor: "black" },
+                    onClose: function(dialog) {
+
+
+                        var resultValueDR = $("iframe[src='DebitNoteBrowse.aspx']").contents().find("#txtValue").val();
+                        //                    var resultDescDR = $("iframe[src='DebitNoteBrowse.aspx']").contents().find("#txtDesc").val();
+                        //                    var resultValSubDR = $("iframe[src='DebitNoteBrowse.aspx']").contents().find("#txtValue1").val();
+                        //                    var resultDescSubDR = $("iframe[src='DebitNoteBrowse.aspx']").contents().find("#txtDesc1").val();
+                        //                    resultLedgType = $("iframe[src='DebitNoteBrowse.aspx']").contents().find("#txtDesc2").val();
+
+                        document.getElementById('txtReceiptRefNo3').value = resultValueDR;
+
+                        dialog.data.fadeOut('200', function() {
+                            dialog.container.slideUp('200', function() {
+                                dialog.overlay.fadeOut('200', function() {
+                                    $.modal.close();
+                                });
+                            });
+                        });
+                    }
+                });
+            });
+
             //loading screen functionality - this part is additional - start
             $("#divTable").ajaxStart(OnAjaxStart);
             $("#divTable").ajaxError(OnAjaxError);
@@ -932,8 +1009,9 @@
         function OnError_LoadDBNoteInfo(response) {
             //debugger;
             var errorText = response.responseText;
-            alert('Error!!!' + '\n\n' + ' Data Cannot be found! Check the parameters again and retry');
-            $('#cmbTransDetailType').focus();
+            //Commented the below code only for account dept to be able key in record without restriction
+//            alert('Error!!!' + '\n\n' + ' Data Cannot be found! Check the parameters again and retry');
+//            $('#cmbTransDetailType').focus();
 
         }
         function OnFailure_LoadChartInfo(response) {
@@ -951,16 +1029,18 @@
         function OnError_LoadInvoiceInfo(response) {
             //debugger;
             var errorText = response.responseText;
-            alert('Error!!!' + '\n\n' + ' Data Cannot be found! Check the parameters again and retry');
-            $('#cmbTransDetailType').focus();
+            //Commented the below code only for account dept to be able key in record without restriction
+//            alert('Error!!!' + '\n\n' + ' Data Cannot be found! Check the parameters again and retry');
+//            $('#cmbTransDetailType').focus();
 
         }
 
         function OnError_LoadBrokerInfo(response) {
             //debugger;
             var errorText = response.responseText;
-            alert('Error!!!' + '\n\n' + ' Customer/Broker Cannot be found! Check the parameters again and retry');
-            $('#cmbTransDetailType').focus();
+            //Commented the below code only for account dept to be able key in record without restriction
+//            alert('Error!!!' + '\n\n' + ' Customer/Broker Cannot be found! Check the parameters again and retry');
+//            $('#cmbTransDetailType').focus();
 
         }
         function OnError_LoadBranchInfoObject(response) {
@@ -1489,7 +1569,8 @@
                                             <asp:TextBox ID="txtReceiptRefNo2" runat="server" Width="71px"></asp:TextBox>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtReceiptRefNo3" runat="server" Width="90px"></asp:TextBox>
+                                            <asp:TextBox ID="txtReceiptRefNo3" runat="server" Width="90px" ></asp:TextBox>
+                                             <img src="img/glass1.png" id="DebitNoteSearch" alt="search" class="searchImage"  style="display:none"/>
                                         </td>
                                         <td>
                                             <asp:TextBox ID="txtTransAmt" runat="server" Width="100px" AutoPostBack="True">0.00</asp:TextBox>
@@ -1516,7 +1597,7 @@
                                         </td>
                                         <td colspan="3">
                                             <div id="HideShow">
-                                                <asp:Label ID="lblTempBrokerName" runat="server" Text="Client Name"></asp:Label>
+                                                <asp:Label ID="lblTempBrokerName" runat="server" Text="Brk Name"></asp:Label>
                                                 <asp:TextBox ID="txtTempBrokerName" runat="server" Width="154px"></asp:TextBox>
                                             </div>
                                         </td>

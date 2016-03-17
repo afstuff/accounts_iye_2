@@ -435,6 +435,7 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
                 txtReceiptNo.Text = .DocNo
                 txtEntryDate.Text = .EntryDate
                 cmbTransDetailType.SelectedValue = Trim(.DetailTransType)
+                'cmbTransDetailType.SelectedValue = .DetailTransType
                 txtTransTypeCode.Text = cmbTransDetailType.SelectedValue
                 cmbDRCR.SelectedValue = .DRCR
                 txtDRCR.Text = cmbDRCR.SelectedValue
