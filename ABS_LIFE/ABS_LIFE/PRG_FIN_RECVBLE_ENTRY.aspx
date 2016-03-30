@@ -34,7 +34,7 @@
         $(document).ready(function() {
 
             HideShow();
-
+            HideShowBroker()
             var resultValueDR;
             var resultValueCR;
             var resultValue;
@@ -48,29 +48,63 @@
                 var subAcctCode = document.getElementById('txtSubAcct').value;
                 if (mainAcctCode == "" || mainAcctCode == "1020080010" || mainAcctCode == "1020080015" || mainAcctCode == "1020080020") {
                     if (subAcctCode == "" || subAcctCode == "000000") {
-                        if ($('#txtTempBrokerName').val() == "") {
-                            alert("Broker name is empty");
+                        if ($('#txtTempClientName').val() == "") {
+                            alert("Client name is empty");
                             var result = confirm("Do you want to continue saving this record");
                             if (result) {
+                                // return true;
+                                if ($('#txtLedgerType').val() == 'T' || $('#txtLedgerType').val() == 'R') {
+                                    if ($('#cmbTransDetailType').val() == 'P' || $('#cmbTransDetailType').val() == 'R') {
+                                        alert("Broker name is: " + $('#txtTempBrokerName').val())
+                                        if ($('#txtTempBrokerName').val() == "" && $('#txtTempBrokerName').val() == "") {
+                                            alert("Broker name is empty");
+                                            var result = confirm("Do you want to continue saving this record");
+                                            if (result) {
+                                                return true;
+                                            }
+                                            else {
+                                                $('#txtTempBrokerName').focus();
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                }
                                 return true;
                             }
                             else {
-                                $('#txtTempBrokerName').focus();
+                                $('#txtTempClientName').focus();
                                 return false;
                             }
                         }
                     }
                 }
 
+                //                if ($('#txtLedgerType').val() == 'T' || $('#txtLedgerType').val() == 'R') {
+                //                    if ($('#cmbTransDetailType').val() == 'P' || $('#cmbTransDetailType').val() == 'R') {
+                //                    alert("Broker name is: " + $('#txtTempBrokerName').val())
+                //                    if ($('#txtTempBrokerName').val() == "" && $('#txtTempBrokerName').val() == "") {
+                //                            alert("Broker name is empty");
+                //                            var result = confirm("Do you want to continue saving this record");
+                //                            if (result) {
+                //                                return true;
+                //                            }
+                //                            else {
+                //                                $('#txtTempBrokerName').focus();
+                //                                return false;
+                //                            }
+                //                        }
+                //                    }
+                //                }
+
             })
 
             function AutoFillClientCode() {
                 if ($("#txtMainAcct").val() == "1020080010" && $("#txtSubAcct").val() != "000000") {
                     var subAcct = $("#txtSubAcct").val();
-//                    var prefix = subAcct.substring(0, 2);
-//                    var suffix = subAcct.substring(2);
-//                    console.log("Prefix: " + prefix);
-//                    console.log("Suffix: " + suffix);
+                    //                    var prefix = subAcct.substring(0, 2);
+                    //                    var suffix = subAcct.substring(2);
+                    //                    console.log("Prefix: " + prefix);
+                    //                    console.log("Suffix: " + suffix);
                     $("#txtReceiptRefNo1").val(subAcct);
                 }
             }
@@ -109,9 +143,9 @@
                             $('#lblRef3').text("DRCR#");
                             $('#lblRef3').css("color", "red");
                             $('#DebitNoteSearch').show();
-//                            $('#txtReceiptRefNo1').val('');
-//                            $('#txtReceiptRefNo2').val('');
-//                            $('#txtReceiptRefNo3').val('');
+                            //                            $('#txtReceiptRefNo1').val('');
+                            //                            $('#txtReceiptRefNo2').val('');
+                            //                            $('#txtReceiptRefNo3').val('');
                         }
                         else if ($('#cmbTransDetailType').val() == 'M') {
                             $('#lblRef1').text("Broker");
@@ -121,9 +155,9 @@
                             $('#lblRef3').text("DRCR#");
                             $('#lblRef3').css("color", "red");
                             $('#DebitNoteSearch').hide();
-//                            $('#txtReceiptRefNo1').val('');
-//                            $('#txtReceiptRefNo2').val('');
-//                            $('#txtReceiptRefNo3').val('');
+                            //                            $('#txtReceiptRefNo1').val('');
+                            //                            $('#txtReceiptRefNo2').val('');
+                            //                            $('#txtReceiptRefNo3').val('');
                         }
                         else {
                             $('#lblRef1').text("Ref. No 1");
@@ -133,9 +167,9 @@
                             $('#lblRef3').text("Ref. No 3");
                             $('#lblRef3').css("color", "black");
                             $('#DebitNoteSearch').hide();
-//                            $('#txtReceiptRefNo1').val('');
-//                            $('#txtReceiptRefNo2').val('');
-//                            $('#txtReceiptRefNo3').val('');
+                            //                            $('#txtReceiptRefNo1').val('');
+                            //                            $('#txtReceiptRefNo2').val('');
+                            //                            $('#txtReceiptRefNo3').val('');
                         }
                         break;
                     case "R":
@@ -146,9 +180,9 @@
                         $('#lblRef3').hide();
                         $('#txtReceiptRefNo3').hide();
                         $('#DebitNoteSearch').hide();
-//                        $('#txtReceiptRefNo1').val('');
-//                        $('#txtReceiptRefNo2').val('');
-//                        $('#txtReceiptRefNo3').val('');
+                        //                        $('#txtReceiptRefNo1').val('');
+                        //                        $('#txtReceiptRefNo2').val('');
+                        //                        $('#txtReceiptRefNo3').val('');
                         break;
                 }
 
@@ -263,7 +297,11 @@
                 $('#txtRefDesc1').val('');
                 if ($('#txtLedgerType').val() == 'T' || $('#txtLedgerType').val() == 'R') {
                     if ($('#cmbTransDetailType').val() == 'P' || $('#cmbTransDetailType').val() == 'R') {
-                        LoadBrokerInfo();
+                        $('#HidShowHideBroker').val('show');
+                        HideShowBroker();
+                        if ($("#txtReceiptRefNo1").val() != "") {
+                            LoadBrokerInfo();
+                        }
                     }
                 }
 
@@ -308,7 +346,7 @@
                 $("#txtSubAcctDesc").val('');
                 if ($("#txtSubAcct").val() != "" && $("#txtMainAcct").val() != "")
                     LoadChartInfo("txtSubAcct", "txtMainAcct", "DR", "Sub");
-                AutoFillClientCode()
+                //                AutoFillClientCode()
             });
 
             //retrieve data on focus loss branches
@@ -572,8 +610,9 @@
                 var xmlDoc = $.parseXML(response.d);
                 var xml = $(xmlDoc);
                 var brokers = xml.find("Table");
+                $('#HidShowHideBroker').val('hide');
+                HideShowBroker();
                 retrieve_BrokerInfoValues(brokers);
-
             }
             // retrieve the values and
             function retrieve_BrokerInfoValues(brokers) {
@@ -975,10 +1014,23 @@
             switch ($('#HidShowHide').val()) {
                 case "hide":
                     $('#HideShow').hide();
-                    $('#txtTempBrokerName').val("");
+                    $('#txtTempClientName').val("");
                     break;
                 default:
                     $('#HideShow').show();
+            }
+
+        }
+
+        //Refresh screen with post back values
+        function HideShowBroker() {
+            switch ($('#HidShowHideBroker').val()) {
+                case "hide":
+                    $('.HideShowBroker').hide();
+                    $('#txtTempBrokerName').val("");
+                    break;
+                default:
+                    $('.HideShowBroker').show();
             }
 
         }
@@ -1010,8 +1062,8 @@
             //debugger;
             var errorText = response.responseText;
             //Commented the below code only for account dept to be able key in record without restriction
-//            alert('Error!!!' + '\n\n' + ' Data Cannot be found! Check the parameters again and retry');
-//            $('#cmbTransDetailType').focus();
+            //            alert('Error!!!' + '\n\n' + ' Data Cannot be found! Check the parameters again and retry');
+            //            $('#cmbTransDetailType').focus();
 
         }
         function OnFailure_LoadChartInfo(response) {
@@ -1030,17 +1082,19 @@
             //debugger;
             var errorText = response.responseText;
             //Commented the below code only for account dept to be able key in record without restriction
-//            alert('Error!!!' + '\n\n' + ' Data Cannot be found! Check the parameters again and retry');
-//            $('#cmbTransDetailType').focus();
+            //            alert('Error!!!' + '\n\n' + ' Data Cannot be found! Check the parameters again and retry');
+            //            $('#cmbTransDetailType').focus();
 
         }
 
         function OnError_LoadBrokerInfo(response) {
             //debugger;
             var errorText = response.responseText;
+            $('#HidShowHideBroker').val('show');
+            HideShowBroker();
             //Commented the below code only for account dept to be able key in record without restriction
-//            alert('Error!!!' + '\n\n' + ' Customer/Broker Cannot be found! Check the parameters again and retry');
-//            $('#cmbTransDetailType').focus();
+            //            alert('Error!!!' + '\n\n' + ' Customer/Broker Cannot be found! Check the parameters again and retry');
+            //            $('#cmbTransDetailType').focus();
 
         }
         function OnError_LoadBranchInfoObject(response) {
@@ -1569,8 +1623,8 @@
                                             <asp:TextBox ID="txtReceiptRefNo2" runat="server" Width="71px"></asp:TextBox>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtReceiptRefNo3" runat="server" Width="90px" ></asp:TextBox>
-                                             <img src="img/glass1.png" id="DebitNoteSearch" alt="search" class="searchImage"  style="display:none"/>
+                                            <asp:TextBox ID="txtReceiptRefNo3" runat="server" Width="71px"></asp:TextBox>
+                                            <img src="img/glass1.png" id="DebitNoteSearch" alt="search" class="searchImage" style="display: none" />
                                         </td>
                                         <td>
                                             <asp:TextBox ID="txtTransAmt" runat="server" Width="100px" AutoPostBack="True">0.00</asp:TextBox>
@@ -1597,8 +1651,8 @@
                                         </td>
                                         <td colspan="3">
                                             <div id="HideShow">
-                                                <asp:Label ID="lblTempBrokerName" runat="server" Text="Brk Name"></asp:Label>
-                                                <asp:TextBox ID="txtTempBrokerName" runat="server" Width="154px"></asp:TextBox>
+                                                <asp:Label ID="lblClientName" runat="server" Text="Clnt Name"></asp:Label>
+                                                <asp:TextBox ID="txtTempClientName" runat="server" Width="154px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -1609,6 +1663,28 @@
                                         </td>
                                         <td>
                                             <asp:Button ID="butDeleteDetail" runat="server" Text="Del" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="HideShowBroker">
+                                                <asp:Label ID="lblBrokerName" runat="server" Text="Broker Name"></asp:Label></div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="HideShowBroker">
+                                                <asp:TextBox ID="txtTempBrokerName" runat="server" Width="285px"></asp:TextBox></div>
+                                        </td>
+                                        <td colspan="3">
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
                                         </td>
                                     </tr>
                                 </table>
@@ -1736,6 +1812,7 @@
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
                                 <asp:HiddenField ID="HidShowHide" runat="server" />
+                                <asp:HiddenField ID="HidShowHideBroker" runat="server" />
                             </div>
                         </div>
                     </div>

@@ -70,7 +70,7 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
             'If prgKey = "journal" Or prgKey = "payment" Then
             '    txtReceiptNo.Enabled = True
             'End If
-
+            HidShowHideBroker.Value = "hide"
 
             SetComboBinding(cmbBranchCode, indLifeEnq.GetById("L02", "003"), "CodeItem_CodeLongDesc", "CodeItem")
             SetComboBinding(cmbCurrencyType, indLifeEnq.GetById("L02", "017"), "CodeItem_CodeLongDesc", "CodeItem")
@@ -170,6 +170,7 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
 
                         .SubAccount = txtSubAcct.Text
                         .TempBrokerName = txtTempBrokerName.Text
+                        .TempClientName = txtTempClientName.Text
 
                         If Trim(txtTellerDate.Text).Length > 0 Then
                             .TellerDate = ValidDate(txtTellerDate.Text)
@@ -323,6 +324,7 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
                         .Remarks = txtRemarks.Text
                         .SubAccount = txtSubAcct.Text
                         .TempBrokerName = txtTempBrokerName.Text
+                        .TempClientName = txtTempClientName.Text
                         docMonth = Right(txtBatchDate.Text, 2)
                         docYear = Left(txtBatchDate.Text, 4)
 
@@ -464,8 +466,18 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
                 End If
 
                 txtTempBrokerName.Text = .TempBrokerName
-                If .TempBrokerName <> "" Then
+                txtTempClientName.Text = .TempClientName
+                'If .TempBrokerName <> "" Then
+                '    HidShowHide.Value = "show"
+                'End If
+
+                If .TempClientName <> "" Then
                     HidShowHide.Value = "show"
+                End If
+                If .TempBrokerName <> "" Then
+                    HidShowHideBroker.Value = "show"
+                Else
+                    HidShowHideBroker.Value = "hide"
                 End If
 
                 txtSubSerialNo.Text = .SubSerialNo
@@ -544,6 +556,7 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
 
         txtSubSerialNo.Text = 0
         txtTempBrokerName.Text = String.Empty
+        txtTempClientName.Text = String.Empty
 
         updateFlag = False
         Session("updateFlag") = updateFlag 'ready for a new record
@@ -575,6 +588,7 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
        
         txtSubSerialNo.Text = 0
         txtTempBrokerName.Text = String.Empty
+        txtTempClientName.Text = String.Empty
         detailEdit = "N"
         Session("detailEdit") = detailEdit
         swEntry = "D"

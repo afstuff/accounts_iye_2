@@ -655,22 +655,22 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
     Protected WithEvents txtRemarks As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''lblTempBrokerName control.
+    '''lblClientName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lblTempBrokerName As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblClientName As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtTempBrokerName control.
+    '''txtTempClientName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTempBrokerName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtTempClientName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''butSaveDetail control.
@@ -698,6 +698,24 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents butDeleteDetail As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''lblBrokerName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblBrokerName As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''txtTempBrokerName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTempBrokerName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''txtMainAcctDesc control.
@@ -779,6 +797,15 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents HidShowHide As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''HidShowHideBroker control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents HidShowHideBroker As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
     '''txtRecptNo control.

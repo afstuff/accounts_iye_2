@@ -43,5 +43,6 @@
     <property name="OperatorId" column="TBFN_GL_OPER_ID" length="3"/>
     <property name="TotalAmt" column="TBFN_GL_TOT_AMT" type="decimal"/>
     <property name="TempBrokerName" column="TBFN_GL_TEMP_BROKER_NAME" length="50"/>
+    <property name="TempClientName" column="TBFN_GL_TEMP_CLIENT_NAME" length="50"/>
   </class>
 </hibernate-mapping>
