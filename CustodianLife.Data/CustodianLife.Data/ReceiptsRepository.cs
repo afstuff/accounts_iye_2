@@ -420,9 +420,9 @@ namespace CustodianLife.Data
                           + ",(SELECT CASE [TBIL_POL_PRM_MODE_PAYT] WHEN 'M' THEN 'MONTHLY' WHEN 'A' THEN 'ANNUALLY' WHEN 'H' THEN 'HALF YEARLY' WHEN 'Q' THEN 'QUARTERLY' END) as Payment_Mode_Desc"
                           + ",convert(varchar, [TBIL_POLICY_EFF_DT], 102) as TBIL_POLICY_EFF_DT"
                           + " FROM [TBIL_POLICY_DET] p INNER JOIN [TBIL_POLICY_PREM_DETAILS] q "
-                          + "ON p.[TBIL_POLY_POLICY_NO] = q.[TBIL_POL_PRM_DTL_POLY_NO] "
+                          + "ON p.[TBIL_POLY_PROPSAL_NO] = q.[TBIL_POL_PRM_DTL_PROP_NO] "
                           + "INNER JOIN [TBIL_POLICY_PREM_INFO] r "
-                          + "ON p.[TBIL_POLY_POLICY_NO] = r.TBIL_POL_PRM_POLY_NO "
+                          + "ON p.[TBIL_POLY_PROPSAL_NO] = r.[TBIL_POL_PRM_PROP_NO]"
                           + " WHERE p." + fld + " = '" + criteriaValue + "'";
             return GetDataSet(query).GetXml();
 
@@ -440,27 +440,27 @@ namespace CustodianLife.Data
             else
                 fld = "[TBIL_POLY_POLICY_NO]";
             string query = "SELECT "
-                           + " [TBIL_POLY_PROPSAL_NO]"
-                          + ",[TBIL_POLY_POLICY_NO]"
-                          + ",[TBIL_POLY_ASSRD_CD]"
-                          + ",(SELECT TOP 1 [TBIL_INSRD_SURNAME] + ' ' + ISNULL([TBIL_INSRD_FIRSTNAME],' ')"
-                          + " FROM [TBIL_INS_DETAIL] b WHERE b.[TBIL_INSRD_CODE] = p.[TBIL_POLY_ASSRD_CD]) as Insured_Name"
-                          + "	                    ,	(SELECT TOP 1 "
-                          + "    [TBIL_INSRD_ADRES1] + ' ' + ISNULL([TBIL_INSRD_ADRES2],' ') "
-                          + "  FROM [TBIL_INS_DETAIL] y "
-                          + "  WHERE y.[TBIL_INSRD_CODE] = p.[TBIL_POLY_ASSRD_CD]) as Insured_Address "
-                          + ",[TBIL_POLY_AGCY_CODE], [TBIL_POLY_PRDCT_CD] as Product_Code "
-                          + ",[TBIL_POLY_FILE_NO] as File_No"
-                          + ",(SELECT TOP 1 [TBIL_AGCY_AGENT_NAME] FROM [TBIL_AGENCY_CD] d WHERE d.[TBIL_AGCY_AGENT_CD]= p.[TBIL_POLY_AGCY_CODE]) as Agent_Name"
-                          + ", [TBIL_POL_PRM_DTL_MOP_PRM_LC]"
-                          + ",[TBIL_POL_PRM_MODE_PAYT] as Payment_Mode "
-                          + ",(SELECT CASE [TBIL_POL_PRM_MODE_PAYT] WHEN 'M' THEN 'MONTHLY' WHEN 'A' THEN 'ANNUALLY' WHEN 'H' THEN 'HALF YEARLY' WHEN 'Q' THEN 'QUARTERLY' END) as Payment_Mode_Desc"
-                          + ",convert(varchar, [TBIL_POLICY_EFF_DT], 102) as TBIL_POLICY_EFF_DT"
-                          + " FROM [TBIL_POLICY_DET] p INNER JOIN [TBIL_POLICY_PREM_DETAILS] q "
-                          + "ON p.[TBIL_POLY_POLICY_NO] = q.[TBIL_POL_PRM_DTL_POLY_NO] "
-                          + "INNER JOIN [TBIL_POLICY_PREM_INFO] r "
-                          + "ON p.[TBIL_POLY_POLICY_NO] = r.TBIL_POL_PRM_POLY_NO "
-                          + " WHERE p." + fld + " = '" + criteriaValue + "'";
+                          + " [TBIL_POLY_PROPSAL_NO]"
+                         + ",[TBIL_POLY_POLICY_NO]"
+                         + ",[TBIL_POLY_ASSRD_CD]"
+                         + ",(SELECT TOP 1 [TBIL_INSRD_SURNAME] + ' ' + ISNULL([TBIL_INSRD_FIRSTNAME],' ')"
+                         + " FROM [TBIL_INS_DETAIL] b WHERE b.[TBIL_INSRD_CODE] = p.[TBIL_POLY_ASSRD_CD]) as Insured_Name"
+                         + "	                    ,	(SELECT TOP 1 "
+                         + "    [TBIL_INSRD_ADRES1] + ' ' + ISNULL([TBIL_INSRD_ADRES2],' ') "
+                         + "  FROM [TBIL_INS_DETAIL] y "
+                         + "  WHERE y.[TBIL_INSRD_CODE] = p.[TBIL_POLY_ASSRD_CD]) as Insured_Address "
+                         + ",[TBIL_POLY_AGCY_CODE], [TBIL_POLY_PRDCT_CD] as Product_Code "
+                         + ",[TBIL_POLY_FILE_NO] as File_No"
+                         + ",(SELECT TOP 1 [TBIL_AGCY_AGENT_NAME] FROM [TBIL_AGENCY_CD] d WHERE d.[TBIL_AGCY_AGENT_CD]= p.[TBIL_POLY_AGCY_CODE]) as Agent_Name"
+                         + ", [TBIL_POL_PRM_DTL_MOP_PRM_LC]"
+                         + ",[TBIL_POL_PRM_MODE_PAYT] as Payment_Mode "
+                         + ",(SELECT CASE [TBIL_POL_PRM_MODE_PAYT] WHEN 'M' THEN 'MONTHLY' WHEN 'A' THEN 'ANNUALLY' WHEN 'H' THEN 'HALF YEARLY' WHEN 'Q' THEN 'QUARTERLY' END) as Payment_Mode_Desc"
+                         + ",convert(varchar, [TBIL_POLICY_EFF_DT], 102) as TBIL_POLICY_EFF_DT"
+                         + " FROM [TBIL_POLICY_DET] p INNER JOIN [TBIL_POLICY_PREM_DETAILS] q "
+                         + "ON p.[TBIL_POLY_PROPSAL_NO] = q.[TBIL_POL_PRM_DTL_PROP_NO] "
+                         + "INNER JOIN [TBIL_POLICY_PREM_INFO] r "
+                         + "ON p.[TBIL_POLY_PROPSAL_NO] = r.[TBIL_POL_PRM_PROP_NO]"
+                         + " WHERE p." + fld + " = '" + criteriaValue + "'";
             return GetDataSet(query);
 
         }
