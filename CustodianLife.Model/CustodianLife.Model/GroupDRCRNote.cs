@@ -20,5 +20,6 @@ namespace CustodianLife.Model
         public virtual string DrCrNo { get; set; }
         public virtual string DrCrNoteDesc { get; set; }
         public virtual string DrCr { get; set; }
+        public virtual string BrokerCode { get; set; }
     }
 }

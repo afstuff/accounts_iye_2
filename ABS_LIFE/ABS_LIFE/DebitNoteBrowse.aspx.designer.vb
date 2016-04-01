@@ -88,15 +88,6 @@ Partial Public Class DebitNoteBrowse
     Protected WithEvents grdView As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''grdView1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents grdView1 As Global.System.Web.UI.WebControls.GridView
-
-    '''<summary>
     '''ods1 control.
     '''</summary>
     '''<remarks>
@@ -104,15 +95,6 @@ Partial Public Class DebitNoteBrowse
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ods1 As Global.System.Web.UI.WebControls.ObjectDataSource
-
-    '''<summary>
-    '''ods2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ods2 As Global.System.Web.UI.WebControls.ObjectDataSource
 
     '''<summary>
     '''txtValue control.

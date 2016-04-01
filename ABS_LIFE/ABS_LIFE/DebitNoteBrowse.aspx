@@ -37,9 +37,9 @@
         function GetRowValue(val) {
             //put the value from the grid selection to an element on the page for onward retrieval
             var txtar = val.split(",");
-            document.getElementById("txtValue").value = txtar[1];
-//            document.getElementById("txtDesc").value = txtar[1];
-//            document.getElementById("txtValue1").value = txtar[2];
+            document.getElementById("txtValue").value = txtar[1];//Debit Note
+            document.getElementById("txtDesc").value = txtar[0]; //PolicyNo
+            document.getElementById("txtValue1").value = txtar[2]//BrokerCode;
 //            document.getElementById("txtDesc1").value = txtar[3];
 //            document.getElementById("txtDesc2").value = txtar[4];
             //  alert("sub code " + txtar[2] + " sub desc " +txtar[3]; 
@@ -127,6 +127,7 @@
                                         <HeaderStyle CssClass="first"></HeaderStyle>
                                         <ItemStyle CssClass="first"></ItemStyle>
                                     </asp:BoundField>
+                                     <asp:BoundField DataField="BrokerCode" HeaderText="Broker Code" />
                                     <asp:BoundField DataField="ProcessingDate" HeaderText="Process Date" />
                                     <asp:BoundField DataField="BatchNo" HeaderText="Batch No" />
                                    <%-- <asp:BoundField DataField="AccountLedgerType" HeaderText="LTyp" />--%>

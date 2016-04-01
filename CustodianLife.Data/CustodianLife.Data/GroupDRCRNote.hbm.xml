@@ -15,7 +15,8 @@
     <property name="DrCrNo" column="TBIL_POL_PRM_DCN_TRANS_NO" length="15" />
     <property name="DrCrNoteDesc" column="TBIL_POL_PRM_DCN_DESC" length="100" />
     <property name="DrCr" column="TBIL_POL_PRM_DCN_DB_CR_CD" length="100" />
-    
+    <property name="BrokerCode" column="TBIL_POL_PRM_DCN_BRK_CODE" length="100" />
+
     <!--
     <one-to-one  name="LoanInterest" class="CustodianLife.Model.LoanInterest, CustodianLife.Model" />
     -->

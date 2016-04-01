@@ -743,12 +743,12 @@ Partial Public Class PRG_FIN_RECVBLE_ENTRY
         Return cinfos
     End Function
     <System.Web.Services.WebMethod()> _
-    Public Shared Function GetBrokerInfo(ByVal _brokercode As String) As String
+    Public Shared Function GetBrokerInfo(ByVal _brokercode As String, ByVal _accountmaincode As String) As String
         Dim brkinfo As String = String.Empty
         Dim recRepo As New GLTransRepository()
 
         Try
-            brkinfo = recRepo.GetBrokerInfo(_brokercode)
+            brkinfo = recRepo.GetBrokerInfo(_brokercode, _accountmaincode)
 
         Catch ex As ApplicationException
 

@@ -136,28 +136,24 @@
                 switch ($('#txtLedgerType').val()) {
                     case "T":
                         if ($('#cmbTransDetailType').val() == 'P') {
-                            $('#lblRef1').text("Broker");
+                            $('#lblRef1').text("DRCR#");
                             $('#lblRef1').css("color", "red");
                             $('#lblRef2').text("Pol.#");
                             $('#lblRef2').css("color", "red");
-                            $('#lblRef3').text("DRCR#");
+                            $('#lblRef3').text("Broker");
                             $('#lblRef3').css("color", "red");
                             $('#DebitNoteSearch').show();
-                            //                            $('#txtReceiptRefNo1').val('');
-                            //                            $('#txtReceiptRefNo2').val('');
-                            //                            $('#txtReceiptRefNo3').val('');
+                           
                         }
                         else if ($('#cmbTransDetailType').val() == 'M') {
-                            $('#lblRef1').text("Broker");
+                            $('#lblRef1').text("DRCR#");
                             $('#lblRef1').css("color", "red");
                             $('#lblRef2').text("Claim #");
                             $('#lblRef2').css("color", "red");
-                            $('#lblRef3').text("DRCR#");
+                            $('#lblRef3').text("Broker");
                             $('#lblRef3').css("color", "red");
                             $('#DebitNoteSearch').hide();
-                            //                            $('#txtReceiptRefNo1').val('');
-                            //                            $('#txtReceiptRefNo2').val('');
-                            //                            $('#txtReceiptRefNo3').val('');
+                          
                         }
                         else {
                             $('#lblRef1').text("Ref. No 1");
@@ -167,9 +163,7 @@
                             $('#lblRef3').text("Ref. No 3");
                             $('#lblRef3').css("color", "black");
                             $('#DebitNoteSearch').hide();
-                            //                            $('#txtReceiptRefNo1').val('');
-                            //                            $('#txtReceiptRefNo2').val('');
-                            //                            $('#txtReceiptRefNo3').val('');
+                           
                         }
                         break;
                     case "R":
@@ -180,9 +174,6 @@
                         $('#lblRef3').hide();
                         $('#txtReceiptRefNo3').hide();
                         $('#DebitNoteSearch').hide();
-                        //                        $('#txtReceiptRefNo1').val('');
-                        //                        $('#txtReceiptRefNo2').val('');
-                        //                        $('#txtReceiptRefNo3').val('');
                         break;
                 }
 
@@ -292,14 +283,14 @@
                 $('#txtBranchCode').val($('#cmbBranchCode').val());
             });
 
-            $("#txtReceiptRefNo1").on('focusout', function(e) {
+            $("#txtReceiptRefNo3").on('focusout', function(e) {
                 e.preventDefault();
                 $('#txtRefDesc1').val('');
                 if ($('#txtLedgerType').val() == 'T' || $('#txtLedgerType').val() == 'R') {
                     if ($('#cmbTransDetailType').val() == 'P' || $('#cmbTransDetailType').val() == 'R') {
                         $('#HidShowHideBroker').val('show');
                         HideShowBroker();
-                        if ($("#txtReceiptRefNo1").val() != "") {
+                        if ($("#txtReceiptRefNo3").val() != "") {
                             LoadBrokerInfo();
                         }
                     }
@@ -316,7 +307,7 @@
 
             });
 
-            $("#txtReceiptRefNo3").on('focusout', function(e) {
+            $("#txtReceiptRefNo1").on('focusout', function(e) {
                 e.preventDefault();
                 if ($('#txtLedgerType').val() == 'T') {
                     if ($('#cmbTransDetailType').val() == 'P') {
@@ -591,7 +582,7 @@
                 $.ajax({
                     type: "POST",
                     url: "PRG_FIN_RECVBLE_ENTRY.aspx/GetBrokerInfo",
-                    data: JSON.stringify({ _brokercode: document.getElementById('txtReceiptRefNo1').value
+                    data: JSON.stringify({ _brokercode: document.getElementById('txtReceiptRefNo3').value, _accountmaincode: document.getElementById('txtMainAcct').value
                     }),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -669,9 +660,9 @@
                 $.ajax({
                     type: "POST",
                     url: "PRG_FIN_RECVBLE_ENTRY.aspx/GetGrpDNoteInfo",
-                    data: JSON.stringify({ _brokercode: document.getElementById('txtReceiptRefNo1').value,
+                    data: JSON.stringify({ _brokercode: document.getElementById('txtReceiptRefNo3').value,
                         _policynum: document.getElementById('txtReceiptRefNo2').value,
-                        _transno: document.getElementById('txtReceiptRefNo3').value
+                        _transno: document.getElementById('txtReceiptRefNo1').value
                     }),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -708,9 +699,9 @@
                 $.ajax({
                     type: "POST",
                     url: "PRG_FIN_RECVBLE_ENTRY.aspx/GetClaimsDNoteInfo",
-                    data: JSON.stringify({ _brokercode: document.getElementById('txtReceiptRefNo1').value,
+                    data: JSON.stringify({ _brokercode: document.getElementById('txtReceiptRefNo3').value,
                         _claimsno: document.getElementById('txtReceiptRefNo2').value,
-                        _transno: document.getElementById('txtReceiptRefNo3').value
+                        _transno: document.getElementById('txtReceiptRefNo1').value
                     }),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -981,13 +972,21 @@
                     onClose: function(dialog) {
 
 
-                        var resultValueDR = $("iframe[src='DebitNoteBrowse.aspx']").contents().find("#txtValue").val();
-                        //                    var resultDescDR = $("iframe[src='DebitNoteBrowse.aspx']").contents().find("#txtDesc").val();
-                        //                    var resultValSubDR = $("iframe[src='DebitNoteBrowse.aspx']").contents().find("#txtValue1").val();
+                        var resultDebitNote = $("iframe[src='DebitNoteBrowse.aspx']").contents().find("#txtValue").val();
+                        var resultPolicyNo = $("iframe[src='DebitNoteBrowse.aspx']").contents().find("#txtDesc").val();
+                        var resultBrokerCode = $("iframe[src='DebitNoteBrowse.aspx']").contents().find("#txtValue1").val();
                         //                    var resultDescSubDR = $("iframe[src='DebitNoteBrowse.aspx']").contents().find("#txtDesc1").val();
                         //                    resultLedgType = $("iframe[src='DebitNoteBrowse.aspx']").contents().find("#txtDesc2").val();
 
-                        document.getElementById('txtReceiptRefNo3').value = resultValueDR;
+                        document.getElementById('txtReceiptRefNo1').value = resultDebitNote;
+                        document.getElementById('txtReceiptRefNo2').value = resultPolicyNo;
+                        document.getElementById('txtReceiptRefNo3').value = resultBrokerCode;
+
+
+                        if (resultBrokerCode != $('#txtSubAcct').val().trim()) {
+                        alert(resultBrokerCode)
+                            alert("Sub account code must be the same as broker code")
+                        }
 
                         dialog.data.fadeOut('200', function() {
                             dialog.container.slideUp('200', function() {
@@ -1617,17 +1616,17 @@
                                                 ControlToValidate="cmbDRCR">*</asp:CustomValidator>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtReceiptRefNo1" runat="server" Width="78px"></asp:TextBox>
+                                            <asp:TextBox ID="txtReceiptRefNo1" runat="server" Width="61px"></asp:TextBox>
+                                            <img src="img/glass1.png" id="DebitNoteSearch" alt="search" class="searchImage" style="display: none" />
                                         </td>
                                         <td>
                                             <asp:TextBox ID="txtReceiptRefNo2" runat="server" Width="71px"></asp:TextBox>
                                         </td>
                                         <td>
                                             <asp:TextBox ID="txtReceiptRefNo3" runat="server" Width="71px"></asp:TextBox>
-                                            <img src="img/glass1.png" id="DebitNoteSearch" alt="search" class="searchImage" style="display: none" />
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtTransAmt" runat="server" Width="100px" AutoPostBack="True">0.00</asp:TextBox>
+                                            <asp:TextBox ID="txtTransAmt" runat="server" Width="85px" AutoPostBack="True">0.00</asp:TextBox>
                                             <%--<asp:RegularExpressionValidator ID="vdamt" runat="server" ErrorMessage="Please Enter a Valid Amount"
                                                 ValidationExpression="^(-)?\d+(\.\d\d)?$" ControlToValidate="txtTransAmt">*</asp:RegularExpressionValidator>
                                        --%>
