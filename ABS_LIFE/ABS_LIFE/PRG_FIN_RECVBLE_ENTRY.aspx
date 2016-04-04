@@ -984,7 +984,6 @@
 
 
                         if (resultBrokerCode != $('#txtSubAcct').val().trim()) {
-                        alert(resultBrokerCode)
                             alert("Sub account code must be the same as broker code")
                         }
 
